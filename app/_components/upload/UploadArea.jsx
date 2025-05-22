@@ -6,7 +6,8 @@ import { useUpload } from "@/app/contexts/UploadContext";
 import { CloudArrowUpIcon } from "@heroicons/react/24/outline";
 
 export default function UploadArea() {
-  const { actions, isLoading } = useUpload();
+  const { actions, isLoading, fileName } = useUpload();
+  // console.log(fileName);
 
   const onDrop = useCallback(
     (acceptedFiles) => {
@@ -25,13 +26,22 @@ export default function UploadArea() {
     maxFiles: 1,
   });
 
+  if (fileName)
+    return (
+      <div className="p-8">
+        <h2 className="text-blue-600 font-semibold bg-blue-200 p-3 w-fit rounded-2xl">
+          {fileName}
+        </h2>
+      </div>
+    );
+
   return (
     <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200 mb-8">
       <div className="p-8">
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-2xl font-semibold text-gray-900 flex items-center">
             <CloudArrowUpIcon className="h-8 w-8 text-blue-500 mr-3" />
-            Step 1: Upload File
+            Upload File
           </h2>
         </div>
 

@@ -15,6 +15,7 @@ const ACTIONS = {
   SET_LOADING: "SET_LOADING",
   SET_ERROR: "SET_ERROR",
   SET_DATA: "SET_DATA",
+  SET_FILENAME: "SET_FILENAME",
   SET_FILTERS: "SET_FILTERS",
   RESET_FILTERS: "RESET_FILTERS",
   RESET_ALL: "RESET_ALL",
@@ -33,6 +34,11 @@ function reducer(state, action) {
         filteredData: action.payload,
         isLoading: false,
         error: null,
+      };
+    case ACTIONS.SET_FILENAME:
+      return {
+        ...state,
+        fileName: action.payload,
       };
     case ACTIONS.SET_FILTERS:
       return {
@@ -74,6 +80,7 @@ export function UploadProvider({ children }) {
     try {
       const jsonData = await readFile(file);
       dispatch({ type: ACTIONS.SET_DATA, payload: jsonData });
+      dispatch({ type: ACTIONS.SET_FILENAME, payload: file.name });
     } catch (error) {
       dispatch({ type: ACTIONS.SET_ERROR, payload: error.message });
     }

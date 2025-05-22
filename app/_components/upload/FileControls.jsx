@@ -19,7 +19,7 @@ export default function FilterControls() {
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-2xl font-semibold text-gray-900 flex items-center">
             <FunnelIcon className="h-8 w-8 text-blue-500 mr-3" />
-            Step 2: Filter Data
+            Filter Data
           </h2>
           <button
             onClick={actions.resetFilters}

@@ -1,6 +1,5 @@
 import UploadArea from "../_components/upload/UploadArea";
 import FilterControls from "../_components/upload/FileControls";
-import EmptyState from "../_components/upload/EmptyState";
 import DataTable from "../_components/upload/DataTable";
 
 import { UploadProvider } from "../contexts/UploadContext";
@@ -18,30 +17,7 @@ export default function UploadPage() {
           <UploadArea />
           <FilterControls />
 
-          {/* Conditional rendering */}
-          <UploadContext.Consumer>
-            {({ data, filteredData }) => (
-              <>
-                {!data.length ? (
-                  <EmptyState
-                    icon="upload"
-                    title="No data loaded"
-                    description="Upload an Excel or CSV file to get started"
-                  />
-                ) : !filteredData.length ? (
-                  <EmptyState
-                    icon="filter"
-                    title="No matching results"
-                    description="Your filters didn't match any data"
-                    actionText="Reset Filters"
-                    onAction={actions.resetFilters}
-                  />
-                ) : (
-                  <DataTable />
-                )}
-              </>
-            )}
-          </UploadContext.Consumer>
+          <DataTable />
         </div>
       </main>
     </UploadProvider>
