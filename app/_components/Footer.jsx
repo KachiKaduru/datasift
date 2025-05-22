@@ -66,9 +66,9 @@ export default function Footer() {
         {/* Bottom copyright */}
         <div className="pt-8 mt-8 border-t border-gray-200 text-center text-gray-500 flex flex-col items-center">
           <div className="flex items-center mb-2">
-            <p>Made with</p>
+            <p>Built with</p>
             <HeartIcon className="mx-2 h-4 w-4 text-red-500" />
-            <p>in Nigeria</p>
+            <p>by Kachi Kaduru</p>
           </div>
           <p>© {new Date().getFullYear()} DataSift. All rights reserved.</p>
         </div>
